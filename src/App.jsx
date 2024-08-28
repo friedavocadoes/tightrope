@@ -1,19 +1,16 @@
 import Navbar from './components/Navbar';
-import Signup from './components/Signup';
-import Login from './components/Login';
+import Gen from './pages/Gen';
 
 function App() {
     return (
         <>
-        <Navbar />
-        <div>
-            <Signup />
-        </div>
-        <div>
-            <Login />
-        </div>
-        
+            <Navbar />
+
+            <div >
+                <Gen />
+            </div>
         </>
+        
     )
 }
 
