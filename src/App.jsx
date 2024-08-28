@@ -1,8 +1,16 @@
 import Navbar from './components/Navbar';
+import Gen from './pages/Gen';
 
 function App() {
     return (
-        <Navbar />
+        <>
+            <Navbar />
+
+            <div >
+                <Gen />
+            </div>
+        </>
+        
     )
 }
 
