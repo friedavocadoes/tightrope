@@ -27,13 +27,13 @@ function Navbar() {
             </div>
 
             <div className="flex space-x-8">
-                <a href="#" className="text-gray-900 hover:text-gray-600 hover:font-bold transition-all duration-200 ease-in-out">
+                <a href="#" className="text-gray-900 hover:text-pink-600 hover:font-bold transition-all duration-200 ease-in-out">
                     Today
                 </a>
-                <a href="#" className="text-gray-900 hover:text-gray-600 hover:font-bold transition-all duration-200 ease-in-out">
+                <a href="#" className="text-gray-900 hover:text-pink-600 hover:font-bold transition-all duration-200 ease-in-out">
                     Explore
                 </a>
-                <a href="#" className="text-gray-900 hover:text-gray-600 hover:font-bold transition-all duration-200 ease-in-out">
+                <a href="#" className="text-gray-900 hover:text-pink-600 hover:font-bold transition-all duration-200 ease-in-out">
                     About
                 </a>
             </div>
