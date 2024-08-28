@@ -3,24 +3,46 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { Range } from 'react-range';
 
-
+let moodDescriptions = ["Very Unhappy", "Unhappy", "Neutral", "Happy", "Very Happy"];
+moodDescriptions[-1] = "";
 const accentColor = "#DFA175";
 
-const Gen = () => {  
+const Generator = () => {  
   const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm({
-    
+    defaultValues: {
+      mood: moodDescriptions[-1], 
+    },
   });
-//   const navigateTo = useNavigate();
+  const navigateTo = useNavigate();
+
+  const [maxBudget, setMaxBudget] = useState(100000);
+  const [showMaxBudgetInput, setShowMaxBudgetInput] = useState(false);
+  const [mood, setMood] = useState(moodDescriptions[-1]);
+
   
   const onSubmit = (data) => {
-    // navigateTo('/results', { state: { data } });
+    navigateTo('/results', { state: { data } });
   };
 
+  const moodValue = watch('moodSlider', -1);
+  const budgetValues = watch('budgetSlider', [0, maxBudget]);
+
+  const handleMoodChange = (e) => {
+    setMood(e.target.value);
+    setValue('mood', e.target.value); 
+  };
+
+  const handleMaxBudgetChange = (e) => {
+    const newMax = parseInt(e.target.value, 10) || 0;
+    setMaxBudget(newMax);
+    setValue('budgetSlider', [budgetValues[0], newMax]);
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <div className="w-full max-w-3xl bg-slate-600 bg-opacity-100 backdrop-blur-[20px] pb-32 p-10 md:p-20 lg:p-20 rounded-lg shadow-2xl relative z-2 text-center mt-32 mb-20 pt-16">
-        <h1 className="text-4xl font-bold text-slate-200 mb-8">Plan Your Dream Vacation</h1>
+      <div className="w-full max-w-3xl bg-[#606797] bg-opacity-0 lg:bg-opacity-40 md:bg-opacity-40 backdrop-blur-[20px] pb-32 p-10 md:p-20 lg:p-20 rounded-lg shadow-2xl relative z-2 text-center mt-32 mb-20 pt-16">
+        <h1 className="text-4xl font-bold text-slate-200 mb-8">Plan Your Vacation</h1>
+        
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 
@@ -44,11 +66,23 @@ const Gen = () => {
               type="text"
               id="budget"
               {...register('budget')}
-              placeholder="What is your budget"
+              placeholder="Estimated Travel Budget"
               className="border border-gray-600 bg-gray-700 text-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-4"
             />
+          
+            {errors.budget && <p className="text-red-500 text-sm mt-2">{errors.budget.message}</p>}
+          </div>
 
-        
+          <div className="flex flex-col">
+            <label htmlFor="lang" className="text-sm font-medium text-gray-300 mb-2">Languages</label>
+            <input
+              type="text"
+              id="lang"
+              {...register('lang')}
+              placeholder="The languages you speak (seperate with comma)"
+              className="border border-gray-600 bg-gray-700 text-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-4"
+            />
+          
             {errors.budget && <p className="text-red-500 text-sm mt-2">{errors.budget.message}</p>}
           </div>
 
@@ -75,4 +109,4 @@ const Gen = () => {
   );
 };
 
-export default Gen;
+export default Generator;
