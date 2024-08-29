@@ -12,14 +12,16 @@ To run this project, you will need to add the following environment variables to
 > [!TIP]
 > Follow [This Guide](https://gargankush.medium.com/storing-api-keys-as-environmental-variable-for-windows-linux-and-mac-and-accessing-it-through-974ba7c5109f) to add the variable to system directly if adding to `.env` file doesnt work
 
-- Deployment script:
+- Development script:
 
 ```bash
+cd backend
 npm i
-npm run build
+npm run dev
+cd ..
+npm i
+npm run dev
 
-// If you want to view
-npm preview
 ```
 
 - Go to http://localhost:5173 (default React port).
