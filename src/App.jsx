@@ -14,13 +14,13 @@ function App() {
       <Header>
         <Body>
           <Routes>
-            <Route path="/" element={<Homepage />} />  {/* Homepage route */}
+            <Route path="/" element={<Homepage />} /> 
           </Routes>
         </Body>
         <Routes>
-          <Route path="/generator" element={<Generator />}/>  {/* Generator page route */}
+          <Route path="/generator" element={<Generator />}/> 
 
-          <Route path="/results" element={<Results />} />  {/* Results page route */}
+          <Route path="/results" element={<Results />} />
         </Routes>
         <Footer />
       </Header>

@@ -1,42 +1,16 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { Range } from 'react-range';
-
-let moodDescriptions = ["Very Unhappy", "Unhappy", "Neutral", "Happy", "Very Happy"];
-moodDescriptions[-1] = "";
-const accentColor = "#DFA175";
 
 const Generator = () => {  
-  const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm({
-    defaultValues: {
-      mood: moodDescriptions[-1], 
-    },
-  });
+  const { register, handleSubmit, formState: { errors } } = useForm({});
   const navigateTo = useNavigate();
-
-  const [maxBudget, setMaxBudget] = useState(100000);
-  const [showMaxBudgetInput, setShowMaxBudgetInput] = useState(false);
-  const [mood, setMood] = useState(moodDescriptions[-1]);
 
   
   const onSubmit = (data) => {
     navigateTo('/results', { state: { data } });
   };
 
-  const moodValue = watch('moodSlider', -1);
-  const budgetValues = watch('budgetSlider', [0, maxBudget]);
-
-  const handleMoodChange = (e) => {
-    setMood(e.target.value);
-    setValue('mood', e.target.value); 
-  };
-
-  const handleMaxBudgetChange = (e) => {
-    const newMax = parseInt(e.target.value, 10) || 0;
-    setMaxBudget(newMax);
-    setValue('budgetSlider', [budgetValues[0], newMax]);
-  };
 
   return (
     <div className="min-h-screen flex items-center justify-center">
