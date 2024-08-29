@@ -26,4 +26,4 @@ async function run(mood, budget, loc, lang) {
     return text;
 }
 
-module.exports = run();
+module.exports = run;

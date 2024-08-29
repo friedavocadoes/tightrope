@@ -23,7 +23,7 @@ app.post('/search', async (req, res) => {
         const text = await run(mood, budget, loc, lang);
         
         // un-comment to see output from Gemini
-        // console.log(text);
+        console.log(text);
         
         const jtext = JSON.parse(text);
         console.log(jtext.vacation_spots[0].name);
